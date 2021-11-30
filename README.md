@@ -1,24 +1,36 @@
-# README
+# <KiraKira>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+喜怒哀楽の「喜」と「楽」のみを記録した日記を共有するサイト。
 
-Things you may want to cover:
+### サイトテーマ
+明るい内容の日記の共有。
 
-* Ruby version
+### テーマを選んだ理由
+SNSはさまざまな情報を共有できる反面、怒りや悲しみについての内容も多いです。私はネガティブなSNSを見て元気が無くなってしまうことが多々ありました。  
+そこで前向きな内容しか発信されない、見ていて元気になるSNSを作ってみたいと思い、このテーマにしました。  
+このサイトを開いている間は、ポジティブな情報しか目に入らないことが理想の状態です。  
+また、毎日続けることで、ポジティブな瞬間を見つける癖がついてくれたら大成功です。
 
-* System dependencies
+### ターゲットユーザ
+嬉しかったこと、楽しかったことをシェアしたい人。何かに挑戦しているなど、前向きにがんばりたいことがある人。
 
-* Configuration
+### 主な利用シーン
+1日の終わりに、その日の嬉しかったこと、楽しかったことを記録しシェアします。  
+それ以外では、自分や他のユーザーのこれまでの日記をチェックし、ポジティブな情報に触れます。  
+他のユーザーとコメントで交流したり、励ましあったりもできます。
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1hdO56OY0K1sd7cVTmOay5kOPYWRqFNnV7HgqZ9lxq3E/edit?usp=sharing>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
