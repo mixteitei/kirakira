@@ -1,0 +1,15 @@
+  - if user == current_user
+    span
+      = link_to "編集する", edit_diary_path(diary)
+  - elsif diary.favorited_by?(current_user)
+    p
+      = link_to diary_favorites_path(diary), method: :delete
+        | ♥
+        = diary.favorites.count
+        | いいね
+  - else 
+    p
+      = link_to diary_favorites_path(diary), method: :post
+        | ♡
+        = diary.favorites.count
+        | いいね

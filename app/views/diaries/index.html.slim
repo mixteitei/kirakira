@@ -1,2 +1,15 @@
 = render 'users/user_menu', user:@user
-= render 'diaries/diaries', diaries:@diaries
+h1 みんなの日記
+- @diaries.each do |diary|
+  div
+    = diary.created_at.strftime('%Y/%m/%d')
+  div
+    = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+  div
+    = diary.user.name
+  div
+    h3
+      = diary.body
+  div
+    = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
+  = render 'diaries/favorite', user:diary.user, diary:diary

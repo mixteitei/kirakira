@@ -11,8 +11,6 @@
   div
     h3
       = diary.body
-  - if diary.image_id.present?
-    div
-      = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
-  span
-    = link_to "編集する", edit_diary_path(diary)
+  div
+    = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
+  = render 'diaries/favorite', user:@user, diary:diary

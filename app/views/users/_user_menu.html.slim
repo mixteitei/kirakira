@@ -5,6 +5,10 @@ div
 div
   = user.name
 div
+  キラキラポイント
+  = user.point.point
+  ポイント
+div
   = link_to "マイ日記", user_path(current_user)
 div
   = link_to "新規投稿", new_diary_path
