@@ -1,3 +1,18 @@
-= render 'users/user_menu'
-div
-  | ユーザー日記一覧ページ
+= render 'users/user_menu', user:@user
+- if @user == current_user
+  h1 マイ日記一覧
+- else
+  h1
+    = @user.name
+    | 日記一覧
+- @diaries.each do |diary|
+  div
+    = diary.created_at.strftime('%Y/%m/%d')
+  div
+    h3
+      = diary.body
+  - if diary.image_id.present?
+    div
+      = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
+  span
+    = link_to "編集する", edit_diary_path(diary)

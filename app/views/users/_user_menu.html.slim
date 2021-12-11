@@ -1,3 +1,12 @@
 h2
   | ユーザーメニュー
-/= attachment_image_tag user, :image, :fill, 63, 63, format:'jpeg', fallback: "ダウンロード.jpg", size: "63x63"
+div
+  = attachment_image_tag user, :image, :fill, 63, 63, format:'jpeg', fallback: "no_image.jpg", size: "63x63"
+div
+  = user.name
+div
+  = link_to "マイ日記", user_path(current_user)
+div
+  = link_to "新規投稿", new_diary_path
+div
+  = link_to "ユーザー情報編集", edit_user_path(current_user)

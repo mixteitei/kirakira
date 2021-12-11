@@ -1,3 +1,13 @@
-= render 'users/user_menu'
-div
-  | ユーザー情報
+= render 'users/user_menu', user: @user
+h1 ユーザー情報編集
+= form_with model:@user, local:true do |f|
+  label for = "inputImage"
+    写真
+  = f.attachment_field :image, id:"inputImage"
+  label for = "inputName"
+    ユーザーネーム
+  = f.text_field :name, id:"inputName"
+  label for = "inputEmail"
+    メールアドレス
+  = f.text_area :email, id:"inputEmail"
+  = f.submit '更新'

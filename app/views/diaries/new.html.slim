@@ -1,11 +1,13 @@
-= render 'users/user_menu'
+= render 'users/user_menu', user: @user
 h1 新規投稿
 h3 
   = Date.current
 h3 今日、嬉しかったこと、楽しかったことはなんですか！？
 = form_with model: @diary, local: true do |f|
-  h4 本文
-  = f.text_area :body
-  h4 写真
-  = f.attachment_field :image
+  label for = "inputBody"
+    本文
+  = f.text_area :body, id:"inputBody"
+  label for = "inputImage"
+    写真（任意）
+  = f.attachment_field :image, id:"inputImag"
   = f.submit '投稿'
