@@ -1,7 +1,7 @@
 class DiariesController < ApplicationController
   def index
     @user =  current_user
-    @diaries = Diary.all
+    @diaries = Diary.all.order(created_at: :desc)
   end
   
   def new
