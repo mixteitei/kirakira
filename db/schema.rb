@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_093532) do
+ActiveRecord::Schema.define(version: 2021_12_12_110035) do
 
   create_table "diaries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 2021_12_07_093532) do
 
   create_table "points", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "point", default: 0, null: false
+    t.integer "point", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "action"
   end
 
   create_table "relationships", force: :cascade do |t|

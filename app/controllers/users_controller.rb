@@ -19,15 +19,25 @@ class UsersController < ApplicationController
   end
   
   def follows
+    @user = User.find(params[:id])
+    @users = @user.followings
   end
   
   def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
   
   def unsubscribe
+    @user = current_user
   end
   
   def withdraw
+    user = current_user
+    user.update(is_deleted: true)
+    reset_session
+    flash[:id_deleted] = "退会処理を実行しました"
+    redirect_to root_path
   end
   
   

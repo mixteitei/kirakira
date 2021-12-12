@@ -1,1 +1,4 @@
-| 退会確認画面
+= render 'users/user_menu', user:@user
+h1 本当に退会しますか?
+= link_to "はい", users_withdraw_path, method: :patch
+= link_to "いいえ", user_path(current_user)

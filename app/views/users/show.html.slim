@@ -4,7 +4,8 @@
 - else
   h1
     = @user.name
-    | 日記一覧
+    日記一覧
+= render 'diaries/follow', user:@user
 - @diaries.each do |diary|
   div
     = diary.created_at.strftime('%Y/%m/%d')

@@ -1,0 +1,7 @@
+  ja:
+    enums:
+      point:
+        action:
+          log_in: "ログイン"
+          post_diary: "投稿"
+          favorite: "いいね"
