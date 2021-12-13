@@ -1,13 +1,18 @@
 = render 'users/user_menu', user: @user
 h1 新規投稿
-h3 
+= render 'layouts/flash'
+
+- if @diary.errors.any?
+  - @diary.errors.full_messages.each do |message|
+    = message
+h3
   = Date.current
 h3 今日、嬉しかったこと、楽しかったことはなんですか！？
 = form_with model: @diary, local: true do |f|
   label for = "inputBody"
-    本文
+    | 本文 (1~200文字)
   = f.text_area :body, id:"inputBody"
   label for = "inputImage"
-    写真（任意）
+    | 写真（任意）
   = f.attachment_field :image, id:"inputImag"
   = f.submit '投稿'

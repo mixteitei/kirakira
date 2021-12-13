@@ -1,4 +1,5 @@
 = render 'users/user_menu', user:@user
+= render 'layouts/flash'
 - if @user == current_user
   h1 マイ日記一覧
 - else
