@@ -13,7 +13,7 @@ class DiariesController < ApplicationController
     diary = Diary.new(diary_params)
     diary.user_id = current_user.id
     if Diary.find_by(user_id: current_user.id, created_at: Time.now.all_day).nil?
-      if Point.find_by(user_id: current_user.id, created_at: Time.now.all_day).nil?
+      if Point.find_by(user_id: current_user.id, action: 1, created_at: Time.now.all_day).nil?
         point = Point.new
         point.user_id = current_user.id
         point.action = 1
