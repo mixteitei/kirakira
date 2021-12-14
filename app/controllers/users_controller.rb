@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :baria_user, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
     @diaries = Diary.where(user_id: @user.id).order(created_at: :desc)
@@ -45,5 +47,11 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:image, :name, :email)
+  end
+  
+  def baria_user
+    unless User.find(params[:id]).id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 end

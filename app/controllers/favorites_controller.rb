@@ -8,8 +8,10 @@ class FavoritesController < ApplicationController
       point.user_id = current_user.id
       point.action = 2
       point.save
+      redirect_to request.referer, notice: "今日初めてのいいね！ キラキラポイント+1P"
+    else
+      redirect_to request.referer
     end
-    redirect_to request.referer
   end
   
   def destroy

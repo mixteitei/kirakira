@@ -1,12 +1,20 @@
 = render 'users/user_menu', user:@user
 h1 みんなの日記
+= render 'layouts/flash'
 - @diaries.each do |diary|
   div
     = diary.created_at.strftime('%Y/%m/%d')
-  div
-    = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
-  div
-    = diary.user.name
+  - if diary.user == current_user
+    div
+      = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+    div
+      = diary.user.name
+  - else
+    = link_to user_path(diary.user) do
+      div
+        = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+      div
+        = diary.user.name
   = render 'diaries/follow', user:diary.user
   div
     h3

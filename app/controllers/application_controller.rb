@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!,except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :sign_in_point
   
@@ -8,6 +9,7 @@ class ApplicationController < ActionController::Base
       point.user_id = current_user.id
       point.action = 0
       point.save
+      redirect_to root_path, notice: "今日初めてのログイン！ キラキラポイント+1P"
     end
   end
     
