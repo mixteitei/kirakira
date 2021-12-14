@@ -1,3 +1,40 @@
-= render 'users/user_menu'
-div
-  | 検索結果
+= render 'users/user_menu', user: @user
+-if @range == "1"
+  h2 ユーザー検索結果: #{@word}
+  table
+    tbody
+    - @users.each do |user|
+      tr
+        td
+          = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40" 
+        - if user == current_user
+          td
+            = user.name
+        - else
+          td
+            = link_to user.name, user_path(user.id)
+- else
+  h2 日記検索結果: #{@word}
+  table
+    tbody
+    - @diaries.each do |diary|
+      div
+        = diary.created_at.strftime('%Y/%m/%d')
+      - if diary.user == current_user
+        div
+          = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+        div
+          = diary.user.name
+      - else
+        = link_to user_path(diary.user) do
+          div
+            = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+          div
+            = diary.user.name
+      = render 'diaries/follow', user:diary.user
+      div
+        h3
+          = diary.body
+      div
+        = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
+      = render 'diaries/favorite', user:diary.user, diary:diary

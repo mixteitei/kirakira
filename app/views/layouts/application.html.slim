@@ -21,6 +21,11 @@ html
                 = link_to "みんなの日記", diaries_path
               li
                 = link_to "ログアウト", destroy_user_session_path, method: :delete
+              li
+                = form_tag(search_path, method: :get)
+                  = text_field_tag 'word'
+                  = select_tag 'range', options_for_select([['User', '1'],['Diary', '2']])
+                  = submit_tag "検索"
           - else
             ul
               li

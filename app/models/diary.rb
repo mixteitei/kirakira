@@ -8,4 +8,7 @@ class Diary < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
+  def self.search(search, word)
+    Diary.where("body LIKE?", "%#{word}%")
+  end
 end
