@@ -1,3 +1,14 @@
 = render 'users/user_menu', user:@user
-div
-  | フォロー一覧
+h1 フォローユーザー一覧
+table
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40"
+        - if user == current_user
+          td
+            = user.name
+        - else
+          td
+            = link_to user.name, user_path(user.id)

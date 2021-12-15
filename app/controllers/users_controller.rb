@@ -21,13 +21,13 @@ class UsersController < ApplicationController
   end
   
   def follows
-    @user = User.find(params[:id])
-    @users = @user.followings
+    @user = current_user
+    @users = User.find(params[:id]).followings.all
   end
   
   def followers
-    @user = User.find(params[:id])
-    @users = @user.followers
+    @user = current_user
+    @users = User.find(params[:id]).followers.all
   end
   
   def unsubscribe

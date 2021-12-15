@@ -4,17 +4,17 @@ div
 div
   = user.name
 div
-  キラキラポイント
+  | キラキラポイント　
   = user.points.all.sum(:point)
-  ポイント
+  | 　ポイント
 div
   = link_to follows_user_path(user.id)
     = user.followings.count
-    フォロー
+    | フォロー
 div
   = link_to followers_user_path(user.id)
     = user.followers.count
-    フォロワー
+    | フォロワー
 - if user == current_user
   div
     = link_to "マイ日記", user_path(current_user)

@@ -6,7 +6,7 @@
   h1
     = @user.name
     日記一覧
-= render 'diaries/follow', user:@user
+= render 'follows/follow', user:@user
 - @diaries.each do |diary|
   div
     = diary.created_at.strftime('%Y/%m/%d')
@@ -15,4 +15,6 @@
       = diary.body
   div
     = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
-  = render 'diaries/favorite', user:@user, diary:diary
+  <div class="favorite_buttons_#{diary.id}">
+    = render 'favorites/favorite', user:@user, diary:diary
+  </div>
