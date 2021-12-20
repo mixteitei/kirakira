@@ -78,3 +78,6 @@ gem 'enum_help'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'rails-i18n'
+group :production do
+  gem 'mysql2'
+end
