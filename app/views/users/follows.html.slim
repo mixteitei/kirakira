@@ -6,9 +6,8 @@ table
       tr
         td
           = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40"
-        - if user == current_user
-          td
-            = user.name
-        - else
           td
             = link_to user.name, user_path(user.id)
+          td
+            = render 'follows/follow', user:user
+= paginate @users

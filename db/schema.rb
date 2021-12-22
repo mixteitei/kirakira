@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_110035) do
+ActiveRecord::Schema.define(version: 2021_12_22_153013) do
 
   create_table "diaries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2021_12_12_110035) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "totalpoints", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "point", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

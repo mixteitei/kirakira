@@ -1,6 +1,5 @@
 = render 'users/user_menu', user:@user
 h1 みんなの日記
-= render 'layouts/flash'
 - @diaries.each do |diary|
   div
     = diary.created_at.strftime('%Y/%m/%d')
@@ -24,3 +23,4 @@ h1 みんなの日記
   <div class="favorite_buttons_#{diary.id}">
     = render 'favorites/favorite', user:diary.user, diary:diary
   </div>
+= paginate @diaries

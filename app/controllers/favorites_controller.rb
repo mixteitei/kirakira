@@ -8,8 +8,12 @@ class FavoritesController < ApplicationController
       point.user_id = current_user.id
       point.action = 2
       point.save
+      favorite.save
+      redirect_to request.referer, notice: "今日初めてのいいね！ キラキラポイント+1P"
+    else
+      favorite.save
+      redirect_to request.referer
     end
-    favorite.save
   end
   
   def destroy
@@ -17,5 +21,6 @@ class FavoritesController < ApplicationController
     @user = User.find(@diary.user_id)
     favorite = current_user.favorites.find_by(diary_id: @diary.id)
     favorite.destroy
+    redirect_to request.referer
   end
 end

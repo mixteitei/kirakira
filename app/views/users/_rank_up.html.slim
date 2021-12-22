@@ -1,0 +1,8 @@
+- if user_signed_in?
+    - if user.points.all.sum(:point) + user.totalpoint.point == 3
+        = image_tag 'second.jpg'
+        ランクアップ!!
+    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21
+        = image_tag 'third.jpg'
+        ランクアップ!!
+    - else

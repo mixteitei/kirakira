@@ -1,5 +1,4 @@
 h1 トップページ
-= render 'layouts/flash'
 h1 みんなの日記
 - @diaries.each do |diary|
   div
@@ -8,10 +7,13 @@ h1 みんなの日記
     = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
   div
     = diary.user.name
+  - if user_signed_in? && diary.user != current_user
+    = render 'follows/follow', user:diary.user
   div
     h3
       = diary.body
   div
     = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
   - if user_signed_in?
-    = render 'diaries/favorite', user:diary.user, diary:diary
+    = render 'favorites/favorite', user:diary.user, diary:diary
+  = paginate @diaries

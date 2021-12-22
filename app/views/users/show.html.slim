@@ -1,5 +1,4 @@
 = render 'users/user_menu', user:@user
-= render 'layouts/flash'
 - if @user == current_user
   h1 マイ日記一覧
 - else
@@ -18,3 +17,4 @@
   <div class="favorite_buttons_#{diary.id}">
     = render 'favorites/favorite', user:@user, diary:diary
   </div>
+= paginate @diaries

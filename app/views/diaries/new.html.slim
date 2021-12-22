@@ -1,6 +1,5 @@
 = render 'users/user_menu', user: @user
 h1 新規投稿
-= render 'layouts/flash'
 
 - if @diary.errors.any?
   - @diary.errors.full_messages.each do |message|

@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
   
   def index
     @user =  current_user
-    @diaries = Diary.all.order(created_at: :desc)
+    @diaries = Diary.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

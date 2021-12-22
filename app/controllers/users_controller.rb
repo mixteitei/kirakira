@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @diaries = Diary.where(user_id: @user.id).order(created_at: :desc)
+    @diaries = Diary.where(user_id: @user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def edit
@@ -22,12 +22,12 @@ class UsersController < ApplicationController
   
   def follows
     @user = current_user
-    @users = User.find(params[:id]).followings.all
+    @users = User.find(params[:id]).followings.all.page(params[:page]).per(10)
   end
   
   def followers
     @user = current_user
-    @users = User.find(params[:id]).followers.all
+    @users = User.find(params[:id]).followers.all.page(params[:page]).per(10)
   end
   
   def unsubscribe

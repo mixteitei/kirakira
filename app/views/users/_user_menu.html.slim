@@ -4,8 +4,15 @@ div
 div
   = user.name
 div
+  - if user.points.all.sum(:point) + user.totalpoint.point < 3
+    = image_tag 'first.jpg'
+  - elsif user.points.all.sum(:point) + user.totalpoint.point < 21
+    = image_tag 'second.jpg'
+  - else
+    = image_tag 'third.jpg'
+div#kirakirapoint
   | キラキラポイント　
-  = user.points.all.sum(:point)
+  = render 'users/kirakirapoint', user: user
   | 　ポイント
 div
   = link_to follows_user_path(user.id)
