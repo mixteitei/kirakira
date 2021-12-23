@@ -82,3 +82,4 @@ group :production do
   gem 'mysql2'
 end
 gem 'whenever', require: false
+gem 'font-awesome-sass', '~> 5.13'

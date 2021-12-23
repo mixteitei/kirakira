@@ -1,8 +1,8 @@
 - if user_signed_in?
-    - if user.points.all.sum(:point) + user.totalpoint.point == 3
-        = image_tag 'second.jpg'
+    - if user.points.all.sum(:point) + user.totalpoint.point == 3 && user.points.where("created_at > ?",Time.current.ago(1.seconds)).present?
+        = image_tag 'challenger.jpg'
         ランクアップ!!
     - elsif user.points.all.sum(:point) + user.totalpoint.point == 21
-        = image_tag 'third.jpg'
+        = image_tag 'master.jpg'
         ランクアップ!!
     - else

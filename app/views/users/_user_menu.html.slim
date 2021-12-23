@@ -5,14 +5,14 @@ div
   = user.name
 div
   - if user.points.all.sum(:point) + user.totalpoint.point < 3
-    = image_tag 'first.jpg'
+    = image_tag 'beginner.jpg', size: '80,80'
   - elsif user.points.all.sum(:point) + user.totalpoint.point < 21
-    = image_tag 'second.jpg'
+    = image_tag 'challenger.jpg', :size => '60,60'
   - else
-    = image_tag 'third.jpg'
+    = image_tag 'master.jpg'
 div#kirakirapoint
   | キラキラポイント　
-  = render 'users/kirakirapoint', user: user
+  = user.points.all.sum(:point) + user.totalpoint.point
   | 　ポイント
 div
   = link_to follows_user_path(user.id)

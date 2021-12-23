@@ -8,30 +8,34 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-        nav
-          = link_to root_path do
-            span
-              | kirakira
-          - if user_signed_in?
-            ul
-              li
-                = link_to "マイページ", user_path(current_user)
-              li
-                = link_to "みんなの日記", diaries_path
-              li
-                = link_to "ログアウト", destroy_user_session_path, method: :delete
-              li
-                = form_tag(search_path, method: :get)
-                  = text_field_tag 'word'
-                  = select_tag 'range', options_for_select([['User', '1'],['Diary', '2']])
-                  = submit_tag "検索"
-          - else
-            ul
-              li
-                = link_to "新規登録", new_user_registration_path
-              li
-                = link_to "ログイン", user_session_path
+    header.shadow-sm
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+          .container
+            a.navbar-brand.p3 href="/"
+              = image_tag('logo.jpg')
+            button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+              span.navbar-toggle-icon
+            .collapse.navbar-collapse#navbarNavDropdown
+              ul.navbar-nav
+                - if user_signed_in?
+                  .mr-auto
+                    li.nav-item
+                      = link_to "マイページ", user_path(current_user)
+                    li.nav-item
+                      = link_to "みんなの日記", diaries_path
+                    li.nav-item
+                      = link_to "ログアウト", destroy_user_session_path, method: :delete
+                  .ml-auto
+                    li.nav-item
+                      = form_tag(search_path, method: :get)
+                        = text_field_tag 'word'
+                        = select_tag 'range', options_for_select([['User', '1'],['Diary', '2']])
+                        = submit_tag "検索"
+                - else
+                  li.nav-item
+                    = link_to "新規登録", new_user_registration_path
+                  li.nav-item
+                    = link_to "ログイン", user_session_path
     = render 'users/rank_up', user:current_user
     div#flashmessage
       = render 'layouts/flash'
