@@ -1,4 +1,9 @@
-= render 'users/user_menu', user:@user
-h1 本当に退会しますか?
-= link_to "はい", users_withdraw_path, method: :patch
-= link_to "いいえ", user_path(current_user)
+main
+  .container.px-5.pb-5.px-sm-0
+    .row
+      = render 'users/user_menu', user:@user
+      .col-md-8.offset-md-1
+        .mb-4
+          h1 本当に退会しますか?
+        = link_to "はい", users_withdraw_path, class: "mr-4 btn btn-danger btn-lg", "data-confirm" => "本当に退会しますか？", method: :patch
+        = link_to "いいえ", user_path(current_user), class: "btn btn-primary btn-lg"

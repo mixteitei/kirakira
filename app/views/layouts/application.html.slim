@@ -42,7 +42,7 @@ html
                     i.fas.fa-star.star
                     = link_to "ログイン", user_session_path, class: 'nav-item-content'
     = render 'users/rank_up', user:current_user
-    div#flashmessage
+    #flashmessage
       = render 'layouts/flash'
 
     = yield

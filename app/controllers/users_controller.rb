@@ -21,12 +21,12 @@ class UsersController < ApplicationController
   end
   
   def follows
-    @user = current_user
+    @user = User.find(params[:id])
     @users = User.find(params[:id]).followings.all.page(params[:page]).per(10)
   end
   
   def followers
-    @user = current_user
+    @user = User.find(params[:id])
     @users = User.find(params[:id]).followers.all.page(params[:page]).per(10)
   end
   
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     user = current_user
     user.update(is_deleted: true)
     reset_session
-    flash[:id_deleted] = "退会処理を実行しました"
+    flash[:danger] = "退会処理を実行しました"
     redirect_to root_path
   end
   

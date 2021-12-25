@@ -1,42 +1,53 @@
-= render 'users/user_menu', user: @user
--if @range == "1"
-  h2 ユーザー検索結果: #{@word}
-  table
-    tbody
-    - @users.each do |user|
-      tr
-        td
-          = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40" 
-        - if user == current_user
-          td
-            = user.name
+main
+  .container.px-5.pb-5.px-sm-0
+    .row
+      = render 'users/user_menu', user: @user
+      .col-md-8.offset-md-1
+        -if @range == "1"
+          .mb-4
+            h1 ユーザー検索結果: #{@word}
+          table
+            tbody
+            - @users.each do |user|
+              tr
+                td.pr-2
+                  = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40"
+                - if user == current_user
+                  td.px-2
+                    = user.name
+                - else
+                  td.px-2
+                    = link_to user.name, user_path(user.id)
+                  td.pl-5
+                    = render 'follows/follow', user:user
+          = paginate @users
         - else
-          td
-            = link_to user.name, user_path(user.id)
-- else
-  h2 日記検索結果: #{@word}
-  table
-    tbody
-    - @diaries.each do |diary|
-      div
-        = diary.created_at.strftime('%Y/%m/%d')
-      - if diary.user == current_user
-        div
-          = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
-        div
-          = diary.user.name
-      - else
-        = link_to user_path(diary.user) do
-          div
-            = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
-          div
-            = diary.user.name
-      = render 'follows/follow', user:diary.user
-      div
-        h3
-          = diary.body
-      div
-        = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
-      <div class="favorite_buttons_#{diary.id}">
-        = render 'favorites/favorite', user:diary.user, diary:diary
-      </div>
+          .mb-4
+            h1 日記検索結果: #{@word}
+            - @diaries.each do |diary|
+              .border-bottom.mb-4
+                .mb-3
+                  div
+                    = diary.created_at.strftime('%Y/%m/%d')
+                  - if diary.user == current_user
+                    .d-inline-flex.px-1
+                      = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+                    .d-inline-flex.px-1
+                      h3
+                        = diary.user.name
+                  - else
+                    = link_to user_path(diary.user) do
+                      .d-inline-flex.px-1
+                        = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
+                      .d-inline-flex.px-1
+                        h3
+                          = diary.user.name
+                  span.pl-4
+                    = render 'follows/follow', user:diary.user
+                    div
+                      h3
+                        = diary.body
+                    div
+                      = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
+                      = render 'favorites/favorite', user:diary.user, diary:diary
+          = paginate @diaries

@@ -9,7 +9,8 @@ class FavoritesController < ApplicationController
       point.action = 2
       point.save
       favorite.save
-      redirect_to request.referer, notice: "今日初めてのいいね！ キラキラポイント+1P"
+      flash[:success] = "今日初めてのいいね！ キラキラポイント+1P"
+      redirect_to request.referer
     else
       favorite.save
       redirect_to request.referer

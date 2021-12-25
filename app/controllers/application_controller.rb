@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
       point.user_id = current_user.id
       point.action = 0
       point.save
-      redirect_to root_path, notice: "今日初めてのログイン！ キラキラポイント+1P"
+      flash[:success] = "今日初めてのログイン！ キラキラポイント+1P"
+      redirect_to root_path
     end
   end
     

@@ -21,7 +21,8 @@ class DiariesController < ApplicationController
         point.action = 1
         point.save
         if diary.save
-          redirect_to user_path(current_user.id), notice: "投稿完了！ キラキラポイント+1P"
+          flash[:success] = "投稿完了！ キラキラポイント+1P"
+          redirect_to user_path(current_user.id)
         else
           @user = current_user
           @diary = diary
@@ -29,7 +30,8 @@ class DiariesController < ApplicationController
         end
       else
         if diary.save
-          redirect_to user_path(current_user.id), notice: "投稿完了！"
+          flash[:success] = "投稿完了！"
+          redirect_to user_path(current_user.id)
         else
           @user = current_user
           @diary = diary
@@ -39,7 +41,7 @@ class DiariesController < ApplicationController
     else
       @user =  current_user
       @diary = Diary.new
-      flash.now[:alert] = "今日の投稿は完了しています"
+      flash.now[:danger] = "今日の投稿は完了しています"
       render :new
     end
   end

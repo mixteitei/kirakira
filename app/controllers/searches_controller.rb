@@ -5,9 +5,9 @@ class SearchesController < ApplicationController
     @word = params[:word]
     
     if @range == "1"
-      @users = User.search(params[:search], @word)
+      @users = User.search(params[:search], @word).page(params[:page]).per(10)
     else
-      @diaries = Diary.search(params[:search], @word)
+      @diaries = Diary.search(params[:search], @word).page(params[:page]).per(10)
     end
   end
 end

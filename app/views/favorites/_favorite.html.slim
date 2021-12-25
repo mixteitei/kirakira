@@ -1,6 +1,6 @@
   - if user == current_user
-    span
-      = link_to "編集する", edit_diary_path(diary)
+    div
+      = link_to "編集する", edit_diary_path(diary), class: "btn btn-success btn-sm my-2"
   - elsif diary.favorited_by?(current_user)
     p
       = link_to diary_favorites_path(diary), method: :delete
