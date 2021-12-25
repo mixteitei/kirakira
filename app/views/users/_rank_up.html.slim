@@ -1,10 +1,13 @@
 - if user_signed_in?
     - if user.points.all.sum(:point) + user.totalpoint.point == 3 && user.points.where("created_at > ?",Time.current.ago(1.seconds)).present?
-        = image_tag 'challenger.jpg', class: "ml-2"
-        h1 ランクアップ!!
-    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21
-        = image_tag 'master.jpg'
         div
-          h1 ランクアップ!!
+          = image_tag 'challenger.jpg', class: "mx-auto d-block"
+        div
+          h1.text-center ランクアップ!!
+    - elsif user.points.all.sum(:point) + user.totalpoint.point == 
+        div
+          = image_tag 'master.jpg', class: "mx-auto d-block"
+        div
+          h1.text-center ランクアップ!!
     - else
       .blank
