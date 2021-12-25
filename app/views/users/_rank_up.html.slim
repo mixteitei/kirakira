@@ -2,7 +2,7 @@
     - if user.points.all.sum(:point) + user.totalpoint.point == 3 && user.points.where("created_at > ?",Time.current.ago(1.seconds)).present?
         = image_tag 'challenger.jpg'
         ランクアップ!!
-    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21
+    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21 && user.points.where("created_at > ?",Time.current.ago(1.seconds)).present?
         = image_tag 'master.jpg'
         ランクアップ!!
     - else

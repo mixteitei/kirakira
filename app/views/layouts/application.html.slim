@@ -8,24 +8,27 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header.shadow-sm
+    header.sticky-top.mb-5
         nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+          a.navbar-brand.p3 href="/"
+            = image_tag('logo.jpg', size: "280x100")
           .container
-            a.navbar-brand.p3 href="/"
-              = image_tag('logo.jpg')
-            button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
-              span.navbar-toggle-icon
+            button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+              span.navbar-toggler-icon
             .collapse.navbar-collapse#navbarNavDropdown
               ul.navbar-nav
                 - if user_signed_in?
                   .mr-auto
                     li.nav-item
-                      = link_to "マイページ", user_path(current_user)
+                      i.fas.fa-star.star
+                      = link_to "マイページ", user_path(current_user), class: 'nav-item-content'
                     li.nav-item
-                      = link_to "みんなの日記", diaries_path
+                      i.fas.fa-star.star
+                      = link_to "みんなの日記", diaries_path, class: 'nav-item-content'
                     li.nav-item
-                      = link_to "ログアウト", destroy_user_session_path, method: :delete
-                  .ml-auto
+                      i.fas.fa-star.star
+                      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-item-content'
+                  .ml-auto.search_icon
                     li.nav-item
                       = form_tag(search_path, method: :get)
                         = text_field_tag 'word'
@@ -33,9 +36,11 @@ html
                         = submit_tag "検索"
                 - else
                   li.nav-item
-                    = link_to "新規登録", new_user_registration_path
+                    i.fas.fa-star.star
+                    = link_to "新規登録", new_user_registration_path, class: 'nav-item-content'
                   li.nav-item
-                    = link_to "ログイン", user_session_path
+                    i.fas.fa-star.star
+                    = link_to "ログイン", user_session_path, class: 'nav-item-content'
     = render 'users/rank_up', user:current_user
     div#flashmessage
       = render 'layouts/flash'
