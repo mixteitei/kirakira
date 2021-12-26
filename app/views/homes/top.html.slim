@@ -23,4 +23,4 @@ main
               = attachment_image_tag diary, :image, :fill, 240, 240, format: 'jpeg'
             - if user_signed_in?
               = render 'favorites/favorite', user:diary.user, diary:diary
-            = paginate @diaries
+        = paginate @diaries
