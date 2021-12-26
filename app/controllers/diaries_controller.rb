@@ -1,9 +1,11 @@
 class DiariesController < ApplicationController
   before_action :baria_diary, only: [:edit, :update, :destroy]
-  
+
+
   def index
     @user =  current_user
-    @diaries = Diary.all.order(created_at: :desc).page(params[:page]).per(10)
+    deleted_user_ids = User.where(is_deleted: true).ids
+    @diaries = Diary.where.not(user_id: deleted_user_ids).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -74,7 +76,7 @@ class DiariesController < ApplicationController
   def diary_params
     params.require(:diary).permit(:body, :image, :user_id)
   end
-  
+
   def baria_diary
     unless Diary.find(params[:id]).user_id == current_user.id
       redirect_to user_path(current_user)

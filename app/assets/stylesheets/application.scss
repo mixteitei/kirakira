@@ -34,7 +34,7 @@
   padding-right: 25px;
 }
 
-.nav-item-content {
+.nav-item-content, {
   color: yellow !important;
 }
 
@@ -52,4 +52,12 @@
 
 .inputBody {
   width: 70%;
+}
+
+.error_message {
+  color: red;
+}
+
+.user_menu_content {
+  color: grey !important;
 }

@@ -10,11 +10,11 @@
         | User: 
         = user.name
       div
-        = link_to follows_user_path(user.id)
+        = link_to follows_user_path(user.id), class: "user_menu_content"
           = user.followings.count
           |    フォロー
       .mb-3
-        = link_to followers_user_path(user.id)
+        = link_to followers_user_path(user.id), class: "user_menu_content"
           = user.followers.count
           |    フォロワー
       .mb-2
@@ -32,10 +32,10 @@
         |　ポイント
       - if user == current_user
         div
-          = link_to "マイ日記", user_path(current_user)
+          = link_to "マイ日記", user_path(current_user), class: "user_menu_content"
         div
-          = link_to "新規投稿", new_diary_path
+          = link_to "新規投稿", new_diary_path, class: "user_menu_content"
         div
-          = link_to "ユーザー情報編集", edit_user_path(current_user)
+          = link_to "ユーザー情報編集", edit_user_path(current_user), class: "user_menu_content"
         div
-          = link_to "退会処理", users_unsubscribe_path
+          = link_to "退会処理", users_unsubscribe_path, class: "user_menu_content"
