@@ -1,0 +1,15 @@
+  ja:
+    enums:
+      point:
+        action:
+          log_in: "ログイン"
+          post_diary: "投稿"
+          favorite: "いいね"
+    activerecord:
+      attributes:
+        diary:
+          body: "本文"
+        user:
+          email: "メールアドレス"
+          password: "パスワード"
+          name: "名前"

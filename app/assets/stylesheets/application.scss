@@ -13,3 +13,55 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+
+.navbar-nav {
+  padding-top: 9vh;
+}
+
+.mr-auto {
+  display: flex;
+}
+
+.search_icon {
+  padding-left: 26vw;
+}
+
+.nav-item {
+  padding-right: 25px;
+}
+
+.nav-item-content, {
+  color: yellow !important;
+}
+
+.star {
+  color: yellow;
+}
+
+#kirakirapoint .kirakira_point_score {
+  font-size: 25px;
+}
+
+.diary_index_title {
+  font-size: 25px !important;
+}
+
+.inputBody {
+  width: 70%;
+}
+
+.error_message {
+  color: red;
+}
+
+.user_menu_content {
+  color: grey !important;
+}
+
+.link_user_name {
+  color: black;
+}

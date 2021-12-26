@@ -1,0 +1,22 @@
+main
+  .container.px-5.pb-5.px-sm-0
+    .row
+      = render 'users/user_menu', user: @user
+      .col-md-8.offset-md-1
+        .mb-4
+          h1 ユーザー情報編集
+        = form_with model:@user, local:true do |f|
+          .mb-2
+            label for = "inputImage"
+              写真
+            = f.attachment_field :image, id:"inputImage"
+          .mb-2
+            label for = "inputName"
+              ユーザーネーム
+            = f.text_field :name, id:"inputName"
+          .mb-2
+            label for = "inputEmail"
+              メールアドレス
+            = f.text_area :email, id:"inputEmail"
+          .mb-2 
+            = f.submit '更新', class: "btn btn-success"

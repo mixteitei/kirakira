@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title
+      | Kirakira
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header.sticky-top.mb-5
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+          a.navbar-brand.p3 href="/"
+            = image_tag('logo.jpg', size: "280x100")
+          .container
+            button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+              span.navbar-toggler-icon
+            .collapse.navbar-collapse#navbarNavDropdown
+              ul.navbar-nav
+                - if user_signed_in?
+                  .mr-auto
+                    li.nav-item
+                      i.fas.fa-star.star
+                      = link_to "マイページ", user_path(current_user), class: 'nav-item-content'
+                    li.nav-item
+                      i.fas.fa-star.star
+                      = link_to "みんなの日記", diaries_path, class: 'nav-item-content'
+                    li.nav-item
+                      i.fas.fa-star.star
+                      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-item-content'
+                  .ml-auto.search_icon
+                    li.nav-item
+                      = form_tag(search_path, method: :get)
+                        = text_field_tag 'word'
+                        = select_tag 'range', options_for_select([['User', '1'],['Diary', '2']])
+                        = submit_tag "検索"
+                - else
+                  li.nav-item
+                    i.fas.fa-star.star
+                    = link_to "新規登録", new_user_registration_path, class: 'nav-item-content'
+                  li.nav-item
+                    i.fas.fa-star.star
+                    = link_to "ログイン", user_session_path, class: 'nav-item-content'
+    = render 'users/rank_up', user:current_user
+    #flashmessage
+      = render 'layouts/flash'
+
+    = yield
