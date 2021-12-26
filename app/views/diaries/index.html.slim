@@ -17,7 +17,7 @@ main
                   h3
                     = diary.user.name
               - else
-                = link_to user_path(diary.user) do
+                = link_to user_path(diary.user), class: "link_user_name" do
                   .d-inline-flex.px-1
                     = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
                   .d-inline-flex.px-1

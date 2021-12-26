@@ -11,13 +11,13 @@ main
             - @users.each do |user|
               tr
                 td.pr-2
-                  = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40"
+                  = attachment_image_tag user, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg", size:"60x60"
                 - if user == current_user
                   td.px-2
                     = user.name
                 - else
                   td.px-2
-                    = link_to user.name, user_path(user.id)
+                    = link_to user.name, user_path(user.id), class: "link_user_name"
                   td.pl-5
                     = render 'follows/follow', user:user
           = paginate @users
@@ -40,7 +40,7 @@ main
                       .d-inline-flex.px-1
                         = attachment_image_tag diary.user, :image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpeg", size: "60x60"
                       .d-inline-flex.px-1
-                        h3
+                        h3.link_user_name
                           = diary.user.name
                   span.pl-4
                     = render 'follows/follow', user:diary.user

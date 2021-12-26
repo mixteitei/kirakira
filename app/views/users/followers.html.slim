@@ -10,7 +10,8 @@ main
             - @users.each do |user|
               tr
                 td.pr-2
-                  = attachment_image_tag user, :image, :fill, 40, 40, format:'jpeg', fallback:"no_image.jpg", size:"40x40"
+                  = attachment_image_tag user, :image, :fill, 60, 60, format:'jpeg', fallback:"no_image.jpg", size:"60x60"
                 td.px-2
-                  = link_to user.name, user_path(user.id)
+                  h3
+                    = link_to user.name, user_path(user.id), class: "link_user_name"
         = paginate @users
