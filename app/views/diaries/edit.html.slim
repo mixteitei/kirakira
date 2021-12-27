@@ -20,4 +20,4 @@ main
           .mb-2
             = f.submit '更新', class: "btn btn-success"
           div
-            = link_to '削除', diary_path(@diary), class: "btn btn-danger", method: :delete
+            = link_to '削除', diary_path(@diary), class: "btn btn-danger", "data-confirm" => "本当に削除しますか？", method: :delete
