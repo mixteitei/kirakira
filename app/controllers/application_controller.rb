@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
       point.user_id = current_user.id
       point.action = 0
       point.save
-      flash[:success] = "今日初めてのログイン！ キラキラポイント+1P"
+      if current_user.points.all.sum(:point) + current_user.totalpoint.point == 3 || current_user.points.all.sum(:point) + current_user.totalpoint.point == 21
+        flash[:success] = "今日初めてのログイン！ ランクアップ!"
+      else
+        flash[:success] = "今日初めてのログイン！ キラキラポイント+1P"
+      end
       redirect_to root_path
     end
   end

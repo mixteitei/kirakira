@@ -9,7 +9,11 @@ class FavoritesController < ApplicationController
       point.action = 2
       point.save
       favorite.save
-      flash[:success] = "今日初めてのいいね！ キラキラポイント+1P"
+      if current_user.points.all.sum(:point) + current_user.totalpoint.point == 3 || current_user.points.all.sum(:point) + current_user.totalpoint.point == 21
+        flash[:success] = "今日初めてのいいね！ ランクアップ！"
+      else
+        flash[:success] = "今日初めてのいいね！ キラキラポイント+1P"
+      end
       redirect_to request.referer
     else
       favorite.save

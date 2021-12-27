@@ -23,7 +23,11 @@ class DiariesController < ApplicationController
         point.action = 1
         point.save
         if diary.save
-          flash[:success] = "投稿完了！ キラキラポイント+1P"
+          if current_user.points.all.sum(:point) + current_user.totalpoint.point == 3 || current_user.points.all.sum(:point) + current_user.totalpoint.point == 21
+            flash[:success] = "投稿完了！ ランクアップ！"
+          else
+            flash[:success] = "投稿完了！ キラキラポイント+1P"
+          end
           redirect_to user_path(current_user.id)
         else
           @user = current_user
