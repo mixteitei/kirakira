@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :baria_user, only: [:edit, :update]
   before_action :is_deleted_user
-  before_action :baria_is_deleted
+  before_action :baria_is_deleted, except: [:unsubscribe, :withdraw]
 
   def show
     @user = User.find(params[:id])
