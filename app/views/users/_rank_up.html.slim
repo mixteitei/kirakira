@@ -4,7 +4,7 @@
           = image_tag 'challenger.jpg', class: "mx-auto d-block"
         div
           h1.text-center ランクアップ!!
-    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21
+    - elsif user.points.all.sum(:point) + user.totalpoint.point == 21 && user.points.where("created_at > ?",Time.current.ago(1.seconds)).present?
         div
           = image_tag 'master.jpg', class: "mx-auto d-block"
         div
