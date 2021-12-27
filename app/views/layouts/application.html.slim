@@ -41,7 +41,6 @@ html
                   li.nav-item
                     i.fas.fa-star.star
                     = link_to "ログイン", user_session_path, class: 'nav-item-content'
-    = render 'users/rank_up', user:current_user
     #flashmessage
       = render 'layouts/flash'
 
